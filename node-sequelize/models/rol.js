@@ -8,7 +8,8 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement: true
     },
     description: DataTypes.STRING
-  }, {
+  }, 
+  {
     timestamps: false
   });
   Rol.associate = function(models) {

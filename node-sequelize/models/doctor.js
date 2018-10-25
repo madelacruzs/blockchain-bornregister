@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     secondlastname: DataTypes.STRING,
     profesionalid: DataTypes.STRING,
     bcaddress: DataTypes.STRING
-  }, {
+  }, 
+  {
     timestamps: false
   });
   Doctor.associate = function(models) {
