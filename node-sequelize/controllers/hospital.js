@@ -29,7 +29,12 @@ module.exports = {
   add(req, res) {
     return Hospital
       .create({
-        name: req.body.class_name,
+        name: req.body.name,
+        rfc: req.body.rfc,
+        registrynumber: req.body.registrynumber,
+        phone: req.body.phone,
+        address: req.body.address,
+        bcaddress: req.body.bcaddress
       })
       .then((hospital) => res.status(201).send(hospital))
       .catch((error) => res.status(400).send(error));
@@ -47,6 +52,11 @@ module.exports = {
         return hospital
           .update({
             name: req.body.name || hospital.name,
+            rfc: req.body.rfc || hospital.rfc,
+            registrynumber: req.body.registrynumber || hospital.registrynumber,
+            phone: req.body.phone || hospital.phone,
+            address: req.body.address || hospital.address,
+            bcaddress: req.body.bcaddress || hospital.bcaddress
           })
           .then(() => res.status(200).send(hospital))
           .catch((error) => res.status(400).send(error));

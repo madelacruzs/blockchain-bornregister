@@ -29,8 +29,13 @@ module.exports = {
   add(req, res) {
     return Doctor
       .create({
-        id: req.body.id,
-        Name: req.body.Name
+        // id: req.body.id,
+        name: req.body.name,
+        id_hospital: req.body.id_hospital,
+        lastname: req.body.lastname,
+        secondlastname: req.body.secondlastname,
+        profesionalid: req.body.profesionalid,
+        bcaddress: req.body.bcaddress
       })
       .then((doctor) => res.status(201).send(doctor))
       .catch((error) => res.status(400).send(error));
