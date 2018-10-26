@@ -53,8 +53,13 @@ module.exports = {
         }
         return doctor
           .update({
-            id: req.body.id || doctor.id,
-            Name: req.body.Name || doctor.Name,
+            //id: req.body.id || doctor.id,
+            name: req.body.name || doctor.name,
+            id_hospital: req.body.id_hospital || doctor.id_hospital,
+            lastname: req.body.lastname || doctor.lastname,
+            secondlastname: req.body.secondlastname || doctor.secondlastname,
+            profesionalid: req.body.profesionalid || doctor.profesionalid,
+            bcaddress: req.body.bcaddress || doctor.bcaddress
           })
           .then(() => res.status(200).send(doctor))
           .catch((error) => res.status(400).send(error));
