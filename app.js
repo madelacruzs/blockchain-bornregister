@@ -2,7 +2,6 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var config = require("./config");
 var routes = require("./routes/routes-babies.js");
-var cors = require('cors');
 
 //Routes Base de Datos
 var indexRouter = require('./node-sequelize/routes/index');
@@ -13,15 +12,17 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors());
+function perimitirCrossDomain(req, res, next) {
+    //en vez de * se puede definir SÓLO los orígenes que permitimos
+    res.header('Access-Control-Allow-Origin', '*'); 
+    //metodos http permitidos para CORS
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE'); 
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+}
+app.use(perimitirCrossDomain);
 
-app.use(function(req, res, next) {
-   res.header("Access-Control-Allow-Origin", "*");
-   res.header('Access-Control-Allow-Methods', 'DELETE, PUT, GET, POST');
-   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-   next();
-});
-  
+
 //Servicio de blockchain
 app.use("/api", routes);
 
