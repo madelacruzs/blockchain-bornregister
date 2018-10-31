@@ -40,7 +40,7 @@ router.get("/babies/transactions/:addressAccount", function(req, res) {
 router.get("/babies/transactions/detail/:tx_hash", function(req, res) {
     var babies = [];
     var tx_hash = req.params.tx_hash;
-    provider.getTransaction(tx_hash).then(function(transaction) {
+    etherscanProvider.getTransaction(tx_hash).then(function(transaction) {
         babies.push({
             result: "OK",
             transaction: transaction
