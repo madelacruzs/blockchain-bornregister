@@ -28,4 +28,6 @@ router.post('/api/doctor', doctorController.add);
 router.put('/api/doctor/:id', doctorController.update);
 router.delete('/api/doctor/:id', doctorController.delete);
 
+//TODO: Insert Register (POST, GET)
+
 module.exports = router;
