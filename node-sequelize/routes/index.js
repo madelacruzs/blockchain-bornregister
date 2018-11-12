@@ -4,7 +4,7 @@ var router = express.Router();
 const rolController = require('../controllers').rol;
 const hospitalController = require('../controllers').hospital;
 const doctorController = require('../controllers').doctor;
-const registryController = require('../controllers/registry').registry;
+const registryController = require('../controllers').registry;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
