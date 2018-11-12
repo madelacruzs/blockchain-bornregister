@@ -4,6 +4,7 @@ var router = express.Router();
 const rolController = require('../controllers').rol;
 const hospitalController = require('../controllers').hospital;
 const doctorController = require('../controllers').doctor;
+const registryController = require('../controllers/registry').registry;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -29,5 +30,7 @@ router.put('/api/doctor/:id', doctorController.update);
 router.delete('/api/doctor/:id', doctorController.delete);
 
 //TODO: Insert Register (POST, GET)
+router.get('/api/registry/:id', registryController.getByName);
+router.post('/api/registry', registryController.add);
 
 module.exports = router;
