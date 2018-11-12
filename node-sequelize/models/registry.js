@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     idhospital: DataTypes.INTEGER,
     iddoctor:DataTypes.INTEGER,
     hashfingerprint: DataTypes.STRING,
-    datetime: DataTypes.TIMESTAMPS,
+    datetime: DataTypes.DATE,
     bcaddress: DataTypes.STRING,
     fingerprint: DataTypes.STRING,
     sex: DataTypes.STRING,
