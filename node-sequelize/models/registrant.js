@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     secondlastname: DataTypes.STRING,
     birthdate: DataTypes.DATE,
     bcaddress: DataTypes.STRING,
-    fingerprint: DataTypes.BYTEA
+    fingerprint: DataTypes.STRING
   }, 
   {
     timestamps: false

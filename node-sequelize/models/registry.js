@@ -15,12 +15,12 @@ module.exports = (sequelize, DataTypes) => {
     hashfingerprint: DataTypes.STRING,
     datetime: DataTypes.TIMESTAMPS,
     bcaddress: DataTypes.STRING,
-    fingerprint: DataTypes.BYTEA,
+    fingerprint: DataTypes.STRING,
     sex: DataTypes.STRING,
     address: DataTypes.STRING,
     nationality: DataTypes.STRING,
-    registrantfingerprint: DataTypes.BYTEA,
-    secondregisterfingerprint: DataTypes.BYTEA,
+    registrantfingerprint: DataTypes.STRING,
+    secondregisterfingerprint: DataTypes.STRING,
   }, 
   {
     timestamps: false
