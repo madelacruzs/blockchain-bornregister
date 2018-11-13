@@ -70,8 +70,8 @@ module.exports = {
         sex: req.body.sex,
         address: req.body.address,
         nationality: req.body.nationality,
-        registrantfingerprint: req.body.registrantfingerprint,
-        secondregisterfingerprint: req.body.secondregisterfingerprint,
+        registrantfingerprint: req.body.motherFingerPrint,
+        secondregisterfingerprint: req.body.fatherFingerPrint,
         tx_hash:req.body.tx_hash
       })
       .then((registry) => res.status(201).send(registry))
