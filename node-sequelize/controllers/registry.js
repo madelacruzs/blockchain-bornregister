@@ -43,7 +43,7 @@ module.exports = {
         secondlastname: "",
         birthdate: Date.now(),
         bcaddress: "0x",
-        fingerprint: req.body.fingerprint
+        fingerprint: req.body.motherFingerPrint
       })
       .then((registrant) => idFirstRegistrant = registrant.idregistrant);
     Registrant
@@ -53,7 +53,7 @@ module.exports = {
         secondlastname: "",
         birthdate: Date.now(),
         bcaddress: "0x",
-        fingerprint: req.body.fingerprint
+        fingerprint: req.body.fatherFingerPrint
       })
       .then((registrant) => idSecondRegistrant = registrant.idregistrant);
     Registry
@@ -72,6 +72,7 @@ module.exports = {
         nationality: req.body.nationality,
         registrantfingerprint: req.body.registrantfingerprint,
         secondregisterfingerprint: req.body.secondregisterfingerprint,
+        tx_hash:req.body.tx_hash
       })
       .then((registry) => res.status(201).send(registry))
       .catch((error) => res.status(400).send(error));

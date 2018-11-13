@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     nationality: DataTypes.STRING,
     registrantfingerprint: DataTypes.STRING,
     secondregisterfingerprint: DataTypes.STRING,
+    tx_hash:req.body.tx_hash
   }, 
   {
     timestamps: false
