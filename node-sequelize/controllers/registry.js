@@ -19,14 +19,48 @@ module.exports = {
       })
       .catch((error) => res.status(400).send(error));
   },
-
-  addRegistry(req, res) {
-    return Registry
+  getByNameRegistrant(req, res) {
+    return Registrant
+      .findByName(req.params.name, {
+        attributes: ['id', 'name', 'lastname','secondlastname','birthdate', 'bcaddress', 'fingerprint' ]
+      })
+      .then((registrant) => {
+        if (!registrant) {
+          return res.status(404).send({
+            message: 'Registrant Not Found',
+          });
+        }
+        return res.status(200).send(registrant);
+      })
+      .catch((error) => res.status(400).send(error));
+  },   
+  addRegistry(req, res) {      
+    var idFirstRegistrant, idSecondRegistrant;
+    Registrant
       .create({
-        // id: req.body.id,
         name: req.body.name,
-        idregistrant: req.body.idregistrant,
-        idsecondregistrant:req.body.idsecondregistrant,
+        lastname: req.body.lastname,
+        secondlastname: req.body.secondlastname,
+        birthdate: req.body.birthdate,
+        bcaddress: req.body.bcaddress,
+        fingerprint: req.body.fingerprint
+      })
+      .then((registrant) => idFirstRegistrant = registrant.idregistrant);
+    Registrant
+      .create({
+        name: req.body.name,
+        lastname: req.body.lastname,
+        secondlastname: req.body.secondlastname,
+        birthdate: req.body.birthdate,
+        bcaddress: req.body.bcaddress,
+        fingerprint: req.body.fingerprint
+      })
+      .then((registrant) => idSecondRegistrant = registrant.idregistrant);
+    Registry
+      .create({
+        name: req.body.name,
+        idregistrant: idFirstRegistrant,
+        idsecondregistrant: idSecondRegistrant,
         idhospital: req.body.idhospital,
         iddoctor: req.body.iddoctor,
         hashfingerprint: req.body.hashfingerprint,
@@ -41,35 +75,5 @@ module.exports = {
       })
       .then((registry) => res.status(201).send(registry))
       .catch((error) => res.status(400).send(error));
-  },
-    getByNameRegistrant(req, res) {
-    return Registrant
-      .findByName(req.params.name, {
-        attributes: ['id', 'name', 'lastname','secondlastname','birthdate', 'bcaddress', 'fingerprint' ]
-      })
-      .then((registrant) => {
-        if (!registrant) {
-          return res.status(404).send({
-            message: 'Registrant Not Found',
-          });
-        }
-        return res.status(200).send(registrant);
-      })
-      .catch((error) => res.status(400).send(error));
-  },
-
-  addRegistrant(req, res) {
-    return Registrant
-      .create({
-        name: req.body.name,
-        lastname: req.body.lastname,
-        secondlastname: req.body.secondlastname,
-        birthdate: req.body.birthdate,
-        bcaddress: req.body.bcaddress,
-        fingerprint: req.body.fingerprint
-        
-      })
-      .then((registrant) => res.status(201).send(registrant))
-      .catch((error) => res.status(400).send(error));
-  },
+  }
 };
