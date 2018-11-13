@@ -38,21 +38,21 @@ module.exports = {
     var idFirstRegistrant, idSecondRegistrant;
     Registrant
       .create({
-        name: req.body.name,
-        lastname: req.body.lastname,
-        secondlastname: req.body.secondlastname,
-        birthdate: req.body.birthdate,
-        bcaddress: req.body.bcaddress,
+        name: req.body.fullName_Mother,
+        lastname: "",
+        secondlastname: "",
+        birthdate: Date.now(),
+        bcaddress: "0x",
         fingerprint: req.body.fingerprint
       })
       .then((registrant) => idFirstRegistrant = registrant.idregistrant);
     Registrant
       .create({
-        name: req.body.name,
-        lastname: req.body.lastname,
-        secondlastname: req.body.secondlastname,
-        birthdate: req.body.birthdate,
-        bcaddress: req.body.bcaddress,
+        name: req.body.fullName_Father,
+        lastname: "",
+        secondlastname: "",
+        birthdate: Date.now(),
+        bcaddress: "0x",
         fingerprint: req.body.fingerprint
       })
       .then((registrant) => idSecondRegistrant = registrant.idregistrant);
